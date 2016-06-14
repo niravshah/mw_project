@@ -3,18 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script type="text/javascript" src="^angular_src^"></script>
-    <script type="text/javascript" src="^angular_route_src^"></script>
-    <script type="text/javascript">
-        var app = angular.module('projectsApp',[]);
-        app.controller('projectsController', function ($scope) {
-            ^angular_objects^
-        });
-
-    </script>
 </head>
 <body ng-app="projectsApp">
 
+<div ng-controller="projectsController">
+    <input type="text" ng-model="data.text"/>
+    <pre>{{data.text}}</pre>
+</div>
+
 </body>
+<script type="text/javascript" src="^angular_src^"></script>
+<script type="text/javascript" src="^angular_route_src^"></script>
+<script src="https://www.gstatic.com/firebasejs/3.0.3/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/angularfire/2.0.0/angularfire.min.js"></script>
+
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "^firebase_api_key^",
+        authDomain: "^firebase_auth_domain^",
+        databaseURL: "^firebase_database_url^",
+        storageBucket: "^firebase_storage_bucket^",
+    };
+    firebase.initializeApp(config);
+</script>
+
+<script type="text/javascript">
+    var app = angular.module('projectsApp',["firebase"]);
+    app.controller('projectsController', function ($scope, $firebaseObject) {
+        ^angular_objects^
+
+        var ref = firebase.database().ref().child($scope.jobid);
+        var syncObject = $firebaseObject(ref);
+        syncObject.$bindTo($scope, "data");
+    });
+</script>
+
 
 </html>

@@ -28,7 +28,12 @@ module.exports = function IndexModule(pb) {
             jobid: self.pathVars.id
         }
 
-        self.ts.registerLocal('angular_script', '');
+
+        self.ts.registerLocal('firebase_api_key', new pb.TemplateValue("AIzaSyCARUWiq-CHuBP9AbJBzwn9aSftF7tnH1w"));
+        self.ts.registerLocal('firebase_auth_domain', new pb.TemplateValue("mwtest-55d3b.firebaseapp.com"));
+        self.ts.registerLocal('firebase_database_url', new pb.TemplateValue("https://mwtest-55d3b.firebaseio.com"));
+        self.ts.registerLocal('firebase_storage_bucket', new pb.TemplateValue("mwtest-55d3b.appspot.com"));
+
         self.ts.registerLocal('angular_objects', new pb.TemplateValue(pb.ClientJs.getAngularObjects(objects), false));
 
         self.ts.load('mw_project', function (err, result) {
