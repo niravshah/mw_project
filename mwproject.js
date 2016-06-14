@@ -46,12 +46,7 @@ module.exports = function ProjectPluginModule(pb) {
      */
     ProjectPlugin.onStartupWithContext = function (context, cb) {
 
-        /**
-         * Administration Navigation sample
-         */
-
         var site = pb.SiteService.getCurrentSite(context.site);
-        // Add a new top level node
         pb.AdminNavigation.addToSite({
             id: "mw_project",
             title: "Projects",
@@ -59,7 +54,6 @@ module.exports = function ProjectPluginModule(pb) {
             href: "/admin/projects",
             access: pb.SecurityService.ACCESS_USER,
         }, site);
-
 
         cb(null, true);
     };

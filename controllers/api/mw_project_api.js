@@ -12,7 +12,7 @@ module.exports = function ProjectApiControllerModule(pb) {
     ProjectApiController.prototype.init = function(props, cb) {
         var self = this;
         pb.BaseController.prototype.init.call(self, props, function () {
-            var BookService = PluginService.getService('BookService', 'mw_project', self.site);
+            var BookService = PluginService.getService('ProjectService', 'mw_project', self.site);
             self.service = new BookService(self.getServiceContext());
             cb();
         });

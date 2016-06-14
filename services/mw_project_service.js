@@ -53,6 +53,9 @@ module.exports = function(pb) {
      * @param {Function} cb A callback that takes a single parameter: an error if occurred
      */
     ProjectService.format = function(context, cb) {
+        var dto = context.data;
+        dto.name = BaseObjectService.sanitize(dto.name);
+        dto.description = BaseObjectService.sanitize(dto.description);
         cb(null);
     };
 
@@ -71,6 +74,8 @@ module.exports = function(pb) {
      * @param {Function} cb A callback that takes a single parameter: an error if occurred
      */
     ProjectService.merge = function(context, cb) {
+        context.object.name        = context.data.name;
+        context.object.description = context.data.description;
         cb(null);
     };
 
@@ -102,7 +107,8 @@ module.exports = function(pb) {
         if (!pb.ValidationService.isNonEmptyStr(obj.description, true)) {
             errors.push(BaseObjectService.validationFailure('description', 'Description is required'));
         }
-        
+
+        pb.log.info("ProjectService.validate ", obj, errors);
         cb(null);
     };
 
