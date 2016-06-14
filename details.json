@@ -1,0 +1,28 @@
+{
+  "uid": "mw_project",
+  "name": "MW Project Custom Object",
+  "description": "MW Project Custom Object",
+  "version": "0.1.0",
+  "pb_version": "0.5.x",
+  "author": {
+    "name": "MoveWithin",
+    "email": "info@movewithin.org",
+    "website": "http://movewithin.org",
+    "contributors": [
+      {
+          "name": "Nirav Shah",
+          "email": ""
+      }
+    ]
+  },
+  "settings": [],
+  "permissions": {
+    "ACCESS_USER": [],
+    "ACCESS_WRITER": [],
+    "ACCESS_EDITOR": [],
+    "ACCESS_MANAGING_EDITOR": []
+  },
+  "main_module": {
+    "path": "mwproject.js"
+  }
+}
